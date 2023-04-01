@@ -6,11 +6,16 @@ package db
 
 import (
 	"context"
+
+	"github.com/google/uuid"
 )
 
 type Querier interface {
+	CreateMeal(ctx context.Context, arg CreateMealParams) (Meal, error)
 	CreateUser(ctx context.Context, arg CreateUserParams) (User, error)
+	GetMeal(ctx context.Context, id uuid.UUID) (Meal, error)
 	GetUser(ctx context.Context, username string) (User, error)
+	ListMeals(ctx context.Context, arg ListMealsParams) ([]Meal, error)
 }
 
 var _ Querier = (*Queries)(nil)
