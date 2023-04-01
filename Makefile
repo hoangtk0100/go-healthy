@@ -31,4 +31,7 @@ migratedown:
 migratedown1:
 	migrate -path db/migration -database "$(DB_SOURCE)" -verbose down 1
 
-.PHONY: network postgres createdb dropdb db new_migration migrateup migratedown migrateup1 migratedown1 
+sqlc:
+	sqlc generate
+
+.PHONY: network postgres createdb dropdb db new_migration migrateup migratedown migrateup1 migratedown1 sqlc
