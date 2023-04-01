@@ -3,6 +3,7 @@ package util
 import (
 	"fmt"
 	"math/rand"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -22,7 +23,9 @@ func RandomString(n int) string {
 }
 
 func RandomEmail() string {
-	return fmt.Sprintf("%s@%s.%s", RandomString(6), RandomString(8), RandomString(3))
+	// For unique email in current time
+	timestamp := strconv.FormatInt(time.Now().UnixNano(), 10)
+	return fmt.Sprintf("%s+%s@email.com", RandomString(6), timestamp)
 }
 
 func RandomPhoneNumber() string {
