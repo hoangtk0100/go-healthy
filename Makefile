@@ -31,6 +31,12 @@ migratedown:
 migratedown1:
 	migrate -path db/migration -database "$(DB_SOURCE)" -verbose down 1
 
+db_docs:
+	dbdocs build doc/db.dbml
+
+db_schema:
+	dbml2sql --postgres -o docs/schema.sql docs/db.dbml
+
 sqlc:
 	sqlc generate
 
