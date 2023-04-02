@@ -1,0 +1,5 @@
+ALTER TABLE body_records DROP CONSTRAINT body_records_username_fkey, ADD CONSTRAINT body_records_username_fkey FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE;
+ALTER TABLE meals DROP CONSTRAINT meals_username_fkey, ADD CONSTRAINT meals_username_fkey FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE;
+ALTER TABLE exercises DROP CONSTRAINT exercises_username_fkey, ADD CONSTRAINT exercises_username_fkey FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE;
+ALTER TABLE diaries DROP CONSTRAINT diaries_username_fkey, ADD CONSTRAINT diaries_username_fkey FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE;
+ALTER TABLE blog_posts DROP CONSTRAINT blog_posts_username_fkey, ADD CONSTRAINT blog_posts_username_fkey FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE;

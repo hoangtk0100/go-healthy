@@ -82,8 +82,8 @@ SELECT id, username, name, description, calories, type, created_at, updated_at, 
 WHERE 
     username = $1
     AND (
-        (created_at >= $2::date OR $2 IS NULL) AND
-        (created_at <= $3::date OR $3 IS NULL)
+        (created_at >= $2 OR $2 IS NULL) AND
+        (created_at <= $3 OR $3 IS NULL)
     )
 ORDER BY created_at
 LIMIT $5
