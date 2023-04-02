@@ -1,0 +1,124 @@
+Project go_healthy {
+  database_type: 'PostgreSQL'
+  note: '''
+    # Go Healthy Database
+  '''
+}
+
+Enum user_status {
+  AVAILABLE
+  LOCKED
+  REMOVED
+}
+
+Enum user_type {
+  SYSTEM
+  ADMIN
+  USER
+}
+
+Enum gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+Table users as U {
+  username varchar(255) [pk]
+  email varchar(255) [unique, not null]
+  full_name varchar(255) [not null]
+  phone_number varchar(16)
+  gender gender
+  type user_type [not null, default: 'USER']
+  status user_status [not null, default: 'AVAILABLE']
+  old_status user_status [not null, default: 'AVAILABLE']
+  avatar_url varchar
+  hashed_password varchar [not null]
+  password_changed_at timestamptz [not null, default: '0001-01-01']
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz [not null, default: `now()`]
+  deleted_at timestamptz
+}
+
+Enum device_type {
+  IOS
+  ANDROID
+  WEB_APP
+}
+
+Table sessions {
+  id uuid [pk]
+  username varchar(255) [ref: > U.username, not null]
+  refresh_token varchar [not null]
+  user_agent varchar [not null]
+  client_ip varchar [not null]
+  device_type device_type [not null]
+  device_id varchar(64)
+  device_model varchar(64)
+  device_token varchar
+  is_blocked boolean [not null, default: false]
+  expires_at timestamptz [not null]
+  created_at timestamptz [not null, default: `now()`]
+  deleted_at timestamptz
+}
+
+Table body_records as BR {
+  id uuid [pk]
+  username varchar(255) [ref: > U.username, not null]
+  weight bigint
+  body_fat bigint
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz [not null, default: `now()`]
+  deleted_at timestamptz
+}
+
+Enum meal_type {
+  MORNING
+  LUNCH
+  DINNER
+  SNACK
+}
+
+Table meals as M {
+  id uuid [pk]
+  username varchar(255) [ref: > U.username, not null]
+  name varchar(255) [not null]
+  description varchar
+  calories int
+  type meal_type [not null, default: "MORNING"]
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz [not null, default: `now()`]
+  deleted_at timestamptz
+}
+
+Table exercises as E {
+  id uuid [pk]
+  username varchar(255) [ref: > U.username, not null]
+  name varchar(255) [not null]
+  description varchar
+  calories_burned int
+  duration int
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz [not null, default: `now()`]
+  deleted_at timestamptz
+}
+
+Table diaries as D {
+  id uuid [pk]
+  username varchar(255) [ref: > U.username, not null]
+  title varchar(255) [not null]
+  description varchar [not null]
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz [not null, default: `now()`]
+  deleted_at timestamptz
+}
+
+Table blog_posts as BP {
+  id uuid [pk]
+  username varchar(255) [ref: > U.username, not null]
+  title varchar(255) [not null]
+  description varchar [not null]
+  created_at timestamptz [not null, default: `now()`]
+  updated_at timestamptz [not null, default: `now()`]
+  deleted_at timestamptz
+}
