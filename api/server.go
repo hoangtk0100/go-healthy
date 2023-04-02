@@ -6,6 +6,7 @@ import (
 	"github.com/hoangtk0100/go-healthy/util"
 )
 
+// TODO: Authenticate logged in user
 var currentUserName = "user@demo.com"
 
 type Server struct {

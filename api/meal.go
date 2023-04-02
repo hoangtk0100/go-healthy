@@ -12,7 +12,7 @@ import (
 type createMealRequest struct {
 	Name        string      `json:"name" binding:"required,min=1"`
 	Description string      `json:"description"`
-	Calories    int32       `json:"calories" binding:"required"`
+	Calories    int32       `json:"calories" binding:"required,gt=0"`
 	Type        db.MealType `json:"type" binding:"required"`
 }
 
