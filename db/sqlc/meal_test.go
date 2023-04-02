@@ -70,10 +70,6 @@ func TestListMeals(t *testing.T) {
 		Username: lastMeal.Username,
 		Limit:    5,
 		Offset:   0,
-		FromDate: sql.NullTime{
-			Time:  time.Now(),
-			Valid: true,
-		},
 	}
 
 	meals, err := testQueries.ListMeals(context.Background(), arg)

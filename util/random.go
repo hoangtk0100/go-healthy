@@ -6,6 +6,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 const alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -46,4 +48,9 @@ func RandomPhoneNumber() string {
 
 func RandomAmount() int32 {
 	return RandomInt(1, 400)
+}
+
+func RandomUID() uuid.UUID {
+	uid, _ := uuid.NewRandom()
+	return uid
 }
