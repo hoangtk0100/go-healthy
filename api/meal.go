@@ -17,6 +17,7 @@ type createMealRequest struct {
 }
 
 type mealResponse struct {
+	ID          string      `json:"id"`
 	Name        string      `json:"name"`
 	Description string      `json:"description"`
 	Calories    int32       `json:"calories"`
@@ -26,6 +27,7 @@ type mealResponse struct {
 
 func newMealResponse(meal db.Meal) mealResponse {
 	return mealResponse{
+		ID:          meal.ID.String(),
 		Name:        meal.Name,
 		Description: meal.Description.String,
 		Calories:    meal.Calories.Int32,

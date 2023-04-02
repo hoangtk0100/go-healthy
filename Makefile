@@ -49,4 +49,4 @@ server:
 mock:
 	mockgen -package mockdb -destination db/mock/store.go github.com/hoangtk0100/go-healthy/db/sqlc Store
 
-.PHONY: network postgres createdb dropdb db new_migration migrateup migratedown migrateup1 migratedown1 sqlc test server mock
+.PHONY: network postgres createdb dropdb db new_migration migrateup migratedown migrateup1 migratedown1 db_docs db_schema sqlc test server mock
