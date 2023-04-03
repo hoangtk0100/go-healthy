@@ -5,7 +5,6 @@ This service will provide APIs for the Frontend to do following things:
 
 Unimplemented things (implement later because this scope focuses on codebase, source structure):
 - Exercise, Diary, Blog Post, Statistic APIs
-- Dockerize the application
 
 Infrastructure:
 - Manage migrations: `golang-migrate`
@@ -15,6 +14,7 @@ Infrastructure:
 - Manage database documentation: `dbdocs`
 - Generate SQL schema: `dbml2sql`
 - CI/CD: `github-action`
+- Package and distribute software applications as lightweight containers: `docker`
 
 ## Overview
 ![](overview.png)
