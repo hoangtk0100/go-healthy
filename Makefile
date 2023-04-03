@@ -1,6 +1,12 @@
 include app.env
 export
 
+up:
+	docker-compose up --build --detach
+
+down:
+	docker-compose down
+
 network:
 	docker network create $(NETWORK_NAME)
 
